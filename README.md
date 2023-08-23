@@ -1,11 +1,8 @@
 # tasktugas_clone
 
 I am Slicing UI from Tasktugas (Login - Sign Up - Verification) made by Flutter.
-<br>
 The design from dribbble https://dribbble.com/shots/21901337-Tasktugas-Onboarding-Sign-up-Login-Forget-password
-<br>
 The Author of the design https://dribbble.com/Bimgraph 
-<br>
 The purpose of making this app is to learn Flutter and add it to my portfolio. 
 
 ## Screenshot
