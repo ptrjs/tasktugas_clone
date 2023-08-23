@@ -1,6 +1,7 @@
 import 'package:tasktugas_clone/core.dart';
 import 'package:tasktugas_clone/core.dart';
 import 'package:flutter/material.dart';
+import 'package:tasktugas_clone/module/auth/view/otp_view.dart';
 import 'package:tasktugas_clone/shared/theme/theme.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       navigatorKey: Get.navigatorKey,
       debugShowCheckedModeBanner: false,
       theme: getDefaultTheme(),
-      home: AuthView(),
+      home: const AuthView(),
     );
   }
 }

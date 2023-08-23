@@ -1,7 +1,8 @@
 {
     "modules": [
         "auth",
-        "home"
+        "home",
+        "dashboard"
     ],
     "module_directory_name": "module",
     "experimental_mode": false,

@@ -19,7 +19,7 @@ class AuthView extends StatefulWidget {
           toolbarHeight: 200,
           bottom: TabBar(
             indicatorColor: secondaryColor,
-            tabs: [
+            tabs: const [
               Tab(
                 text: "Login",
               ),
@@ -54,7 +54,7 @@ class AuthView extends StatefulWidget {
               const SizedBox(
                 height: 32.0,
               ),
-              Column(
+              const Column(
                 children: [
                   Text(
                     "Welcome to Tasktugas",
@@ -64,7 +64,7 @@ class AuthView extends StatefulWidget {
                       color: Colors.black,
                     ),
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: 8.0,
                   ),
                   Text(
@@ -84,7 +84,7 @@ class AuthView extends StatefulWidget {
             ],
           ),
         ),
-        body: TabBarView(
+        body: const TabBarView(
           children: [
             LoginView(),
             SignUpView(),

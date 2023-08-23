@@ -2,23 +2,22 @@
 
 import 'package:flutter/material.dart';
 import 'package:tasktugas_clone/core.dart';
+import 'package:tasktugas_clone/module/auth/controller/login_controller.dart';
+import 'package:tasktugas_clone/module/auth/view/otp_view.dart';
 import 'package:tasktugas_clone/shared/theme/theme_config.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
 
   @override
-  State<LoginView> createState() => _LoginViewState();
-}
+  State<LoginView> createState() => LoginController();
 
-class _LoginViewState extends State<LoginView> {
-  AuthController authController = AuthController.instance;
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, LoginController controller) {
+    controller.view = this;
     return Scaffold(
       backgroundColor: bgGrey,
       body: SingleChildScrollView(
+        controller: ScrollController(),
         child: Container(
           padding: const EdgeInsets.all(10.0),
           child: Column(
@@ -28,7 +27,7 @@ class _LoginViewState extends State<LoginView> {
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
-                child: Container(
+                child: SizedBox(
                   height: 40,
                   width: MediaQuery.of(context).size.width,
                   child: ElevatedButton.icon(
@@ -53,7 +52,7 @@ class _LoginViewState extends State<LoginView> {
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
-                child: Container(
+                child: SizedBox(
                   height: 40,
                   width: MediaQuery.of(context).size.width,
                   child: ElevatedButton.icon(
@@ -89,102 +88,118 @@ class _LoginViewState extends State<LoginView> {
               const SizedBox(
                 height: 20.0,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  TextFormField(
-                    decoration: const InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.email,
-                      ),
-                      hintText: "Enter your email",
-                    ),
-                    onChanged: (value) {},
-                  ),
-                  const SizedBox(
-                    height: 8.0,
-                  ),
-                  TextFormField(
-                    obscureText: authController.isPasswordVisible,
-                    decoration: InputDecoration(
-                        hintText: "Enter your password",
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    TextFormField(
+                      decoration: const InputDecoration(
                         prefixIcon: Icon(
-                          Icons.lock,
+                          Icons.email,
                         ),
-                        suffixIcon: IconButton(
-                          onPressed: () {
-                            authController.togglePasswordVisibility();
-                          },
-                          icon: Icon(
-                            authController.isPasswordVisible
-                                ? Icons.visibility
-                                : Icons.visibility_off,
+                        hintText: "Enter your email",
+                      ),
+                      onChanged: (value) {},
+                    ),
+                    const SizedBox(
+                      height: 8.0,
+                    ),
+                    TextFormField(
+                      obscureText: controller.isPasswordVisible,
+                      decoration: InputDecoration(
+                          hintText: "Enter your password",
+                          prefixIcon: const Icon(
+                            Icons.lock,
                           ),
-                        )),
-                    onChanged: (value) {},
-                  ),
-                  const SizedBox(
-                    height: 8.0,
-                  ),
-                  Text(
-                    "Forgot Password?",
-                    style: TextStyle(
-                      fontSize: 10.0,
-                      color: Colors.grey,
-                      fontWeight: FontWeight.bold,
+                          suffixIcon: IconButton(
+                            onPressed: () {
+                              controller.togglePasswordVisibility();
+                            },
+                            icon: Icon(
+                              controller.isPasswordVisible
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                            ),
+                          )),
+                      onChanged: (value) {},
                     ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 12.0,
-              ),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                height: 40,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: primaryColor,
-                  ),
-                  onPressed: () {},
-                  child: Text("Login",
+                    const SizedBox(
+                      height: 8.0,
+                    ),
+                    const Text(
+                      "Forgot Password?",
                       style: TextStyle(
-                        color: Colors.grey[600],
+                        fontSize: 10.0,
+                        color: Colors.grey,
                         fontWeight: FontWeight.bold,
-                      )),
-                ),
-              ),
-              const SizedBox(
-                height: 12.0,
-              ),
-              RichText(
-                textAlign: TextAlign.center,
-                text: TextSpan(
-                  text: '',
-                  style: DefaultTextStyle.of(context).style,
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: 'By signing up, you agree to our ',
-                    ),
-                    TextSpan(
-                      text: 'Terms of service',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: secondaryColor,
-                          decoration: TextDecoration.underline),
-                    ),
-                    TextSpan(
-                      text: ' and ',
-                    ),
-                    TextSpan(
-                      text: 'Privacy policy',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: secondaryColor,
-                          decoration: TextDecoration.underline),
+                      ),
                     ),
                   ],
                 ),
+              ),
+              const SizedBox(
+                height: 8.0,
+              ),
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      height: 40,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: primaryColor,
+                        ),
+                        onPressed: () => Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => OTPView()),
+                        ),
+                        child: Text("Login",
+                            style: TextStyle(
+                              color: Colors.grey[600],
+                              fontWeight: FontWeight.bold,
+                            )),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 12.0,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
+                    child: RichText(
+                      textAlign: TextAlign.center,
+                      text: TextSpan(
+                        text: '',
+                        style: DefaultTextStyle.of(context).style,
+                        children: <TextSpan>[
+                          const TextSpan(
+                            text: 'By signing up, you agree to our ',
+                          ),
+                          TextSpan(
+                            text: 'Terms of service',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: secondaryColor,
+                                decoration: TextDecoration.underline),
+                          ),
+                          const TextSpan(
+                            text: ' and ',
+                          ),
+                          TextSpan(
+                            text: 'Privacy policy',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: secondaryColor,
+                                decoration: TextDecoration.underline),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
