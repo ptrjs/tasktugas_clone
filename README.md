@@ -1,16 +1,13 @@
 # tasktugas_clone
 
-A new Flutter project.
+I am Slicing UI from Tasktugas (Login - Sign Up - Verification) made by Flutter.
+The design from dribbble https://dribbble.com/shots/21901337-Tasktugas-Onboarding-Sign-up-Login-Forget-password
+The Author of the design https://dribbble.com/Bimgraph 
+The purpose of making this app is to learn Flutter and add it to my portfolio. 
 
-## Getting Started
+## Screenshot
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img src="https://github.com/ptrjs/tasktugas_clone/assets/34370936/eee82906-6a3b-4724-b224-ae9a7c2c3e91" width="300">
+<img src="https://github.com/ptrjs/tasktugas_clone/assets/34370936/6ebf744b-baf5-4412-8331-e90c6e062f94" width="300">
+<img src="https://github.com/ptrjs/tasktugas_clone/assets/34370936/5cd788f1-37c3-406e-9164-486ccd82addb" width="300">
+<img src="https://github.com/ptrjs/tasktugas_clone/assets/34370936/1055ea02-3acb-450a-b890-249f96015f7d" width="300">
